@@ -69,7 +69,7 @@ public class GraphicsPanel extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        //g2.draw(new Rectangle2D.Double(baseX, baseY, image.getWidth(), image.getWidth()));
+        int size = 4;
         if (som != null) {
             ArrayList<ArrayList<Integer>> weights = som.getWeights();
             for (int i=0; i<som.getLength(); i++) {
@@ -77,7 +77,7 @@ public class GraphicsPanel extends JPanel implements ActionListener {
                     Color aColour = colorManager.generateColor(weights.get(0).get(i*j),
                             weights.get(1).get(i*j), weights.get(2).get(i*j));
                     g2.setColor(aColour);
-                    g2.fillRect(baseX + j*2, baseY + i*2, 2, 2);
+                    g2.fillRect(baseX + j*size, baseY + i*size, size, size);
                 }
             }
         }
