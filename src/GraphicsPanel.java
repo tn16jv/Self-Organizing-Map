@@ -69,13 +69,15 @@ public class GraphicsPanel extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        int size = 4;
         if (som != null) {
+            int size = 4;
+            int index;
             ArrayList<ArrayList<Integer>> weights = som.getWeights();
             for (int i=0; i<som.getLength(); i++) {
                 for (int j=0; j<som.getWidth(); j++) {
-                    Color aColour = colorManager.generateColor(weights.get(0).get(i*j),
-                            weights.get(1).get(i*j), weights.get(2).get(i*j));
+                    index = i * som.getWidth() + j;
+                    Color aColour = colorManager.generateColor(weights.get(0).get(index),
+                            weights.get(1).get(index), weights.get(2).get(index));
                     g2.setColor(aColour);
                     g2.fillRect(baseX + j*size, baseY + i*size, size, size);
                 }
