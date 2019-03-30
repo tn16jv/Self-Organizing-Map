@@ -122,7 +122,7 @@ public class SelfOrganizingMap {
         ArrayList<Color> rgb = ColorManager.getInstance().imageRGB(image);
 
 
-        BufferedImage bufferedImage = new BufferedImage(image.getHeight(), image.getWidth(),
+        BufferedImage bufferedImage = new BufferedImage(image.getWidth(), image.getHeight(),
                 BufferedImage.TYPE_INT_RGB);
         SNode tmpNode, targetNode;
         int index, bmu, red, green, blue;
@@ -137,8 +137,7 @@ public class SelfOrganizingMap {
                 green = targetNode.weights.get(1).intValue();
                 blue = targetNode.weights.get(2).intValue();
                 Color newColor = new Color(red, green, blue);
-                int thing = newColor.getRGB();
-                bufferedImage.setRGB(i, j, -newColor.getRGB());
+                bufferedImage.setRGB(j, i, newColor.getRGB());
             }
         }
         File output = new File("result.png");
