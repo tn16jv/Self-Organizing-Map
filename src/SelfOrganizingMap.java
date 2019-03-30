@@ -78,13 +78,11 @@ public class SelfOrganizingMap {
         double currentClosest = Double.MAX_VALUE;
         ArrayList<Integer> indices = new ArrayList<Integer>();
         for (int i=0; i<nodes.size(); i++) {
-            if (i != randIndex) {
-                double thisDistance = targetNode.distanceSimilar(nodes.get(i));
-                if (thisDistance < currentClosest) {
-                    currentClosest = thisDistance;
-                    indices.clear();
-                    indices.add(i);
-                }
+            double thisDistance = targetNode.distanceSimilar(nodes.get(i));
+            if (thisDistance < currentClosest) {
+                currentClosest = thisDistance;
+                indices.clear();
+                indices.add(i);
             }
         }
         return indices.get(0);
@@ -95,25 +93,25 @@ public class SelfOrganizingMap {
     }
 
     public void train() {
-        printWeights();
+        //printWeights();
         for (int i=0; i<epochs; i++) {
             learningRate = learningRate * (1 - (double)i/epochs);
             neighSize = neighSize * (1 - (double)i/epochs);
             double epsilon = 0.1 * Math.pow(0.005/.1, (double)i/epochs);
 
-            int randIndex = rand.nextInt(nodes.size());
-            SNode currentCell = nodes.get(randIndex);
+            //int randIndex = rand.nextInt(nodes.size());
+            //SNode currentCell = nodes.get(randIndex);
+            int randIndex = rand.nextInt(data[0].length);
+            SNode currentCell = new SNode((double)data[0][randIndex],
+                    (double)data[1][randIndex], (double)data[2][randIndex]);
             int closestIndex = bestMatchingUnit(currentCell, randIndex);
-            //int[] shuffle = randomPattern(data[0].length);
             for (int j=0; j<nodes.size(); j++) {
-                //int[] pattern = {data[0][shuffle[j]], data[1][shuffle[j]], data[2][shuffle[j]]};
-                //int[][] patternAry = tile(pattern, ySize);
                 double cellDistance = toplogy.latticeDistance(closestIndex, j);
                 double hrs = Math.exp(- (cellDistance*cellDistance)/(2.0 * neighSize * neighSize));
-                nodes.get(j).adjustWeights(currentCell, epsilon * hrs);
+                nodes.get(j).adjustWeights(currentCell, hrs);
             }
         }
-        printWeights();
+        //printWeights();
     }
 
     private void printWeights() {

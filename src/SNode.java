@@ -9,6 +9,13 @@ public class SNode {
 
     }
 
+    public SNode(Double x, Double y, Double z) {
+        weights = new ArrayList<Double>();
+        weights.add(x);
+        weights.add(y);
+        weights.add(z);
+    }
+
     public double distanceSimilar(SNode targetNode) {
         double distance = 0.0;
         for (int i=0; i<weights.size(); i++) {

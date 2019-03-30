@@ -92,8 +92,8 @@ public class GraphicsPanel extends JPanel implements ActionListener {
             double neighbourhoodSize = Double.parseDouble(neighbourField.getText());
             double learningRate = Double.parseDouble(learningField.getText());
             int epochs = Integer.parseInt(epochsField.getText());
-            int xSize = 20;
-            int ySize = 10;
+            int xSize = 200;
+            int ySize = 150;
             EventQueue.invokeLater(new Runnable() { // Create thread, as messageField waits to update when in same thread
                 @Override
                 public void run() {
