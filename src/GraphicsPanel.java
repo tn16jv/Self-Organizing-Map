@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.io.File;
 
 public class GraphicsPanel extends JPanel implements ActionListener {
-    private JButton initialButton, trainButton, fileButton;
+    private JButton initialButton, trainButton, fileButton, compressButton;
     private JTextField fileField, neighbourField, learningField, epochsField, messageField;
     private JLabel neighbourLabel, learningLabel, epochsLabel;
     private ImageReader imgReader = ImageReader.getInstance();
@@ -31,6 +31,8 @@ public class GraphicsPanel extends JPanel implements ActionListener {
         fileButton = new JButton("Choose Image:");
         fileButton.addActionListener(this);
         fileField = new JTextField(25);
+        compressButton = new JButton("Compress Image");
+        compressButton.addActionListener(this);
         neighbourLabel = new JLabel("Neighbourhood Size:");
         neighbourField = new JTextField(6);
         learningLabel = new JLabel("Learning Rate:");
@@ -47,6 +49,7 @@ public class GraphicsPanel extends JPanel implements ActionListener {
         add(trainButton);
         add(fileButton);
         add(fileField);
+        add(compressButton);
         add(neighbourLabel);
         add(neighbourField);
         add(learningLabel);
@@ -120,8 +123,12 @@ public class GraphicsPanel extends JPanel implements ActionListener {
             if (returnValue == JFileChooser.APPROVE_OPTION) {   // Once user selects and approves the file
                 File selectedFile = jfc.getSelectedFile();
                 fileField.setText(selectedFile.getAbsolutePath());
-                image = imgReader.loadImage(fileField.getText()); // will be null if invalid image format
+
             }
+        } else if (source == compressButton) {
+            image = imgReader.loadImage(fileField.getText()); // will be null if invalid image format
+            if (som != null)
+                som.compress(image);
         }
     }
 

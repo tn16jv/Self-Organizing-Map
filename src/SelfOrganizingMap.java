@@ -1,3 +1,8 @@
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -93,7 +98,6 @@ public class SelfOrganizingMap {
     }
 
     public void train() {
-        //printWeights();
         for (int i=0; i<epochs; i++) {
             learningRate = learningRate * (1 - (double)i/epochs);
             neighSize = neighSize * (1 - (double)i/epochs);
@@ -111,7 +115,36 @@ public class SelfOrganizingMap {
                 nodes.get(j).adjustWeights(currentCell, hrs);
             }
         }
-        //printWeights();
+    }
+
+    public void compress(BufferedImage image) {
+        int tiles = 8;
+        ArrayList<Color> rgb = ColorManager.getInstance().imageRGB(image);
+
+
+        BufferedImage bufferedImage = new BufferedImage(image.getHeight(), image.getWidth(),
+                BufferedImage.TYPE_INT_RGB);
+        SNode tmpNode, targetNode;
+        int index, bmu, red, green, blue;
+        for (int i=0; i<image.getHeight(); i++) {
+            for (int j=0; j<image.getWidth(); j++) {
+                index = i * image.getWidth() + j;
+                tmpNode = new SNode((double)rgb.get(index).getRed(),
+                        (double)rgb.get(index).getGreen(), (double)rgb.get(index).getBlue());
+                bmu = bestMatchingUnit(tmpNode, 0);
+                targetNode = nodes.get(bmu);
+                red = targetNode.weights.get(0).intValue();
+                green = targetNode.weights.get(1).intValue();
+                blue = targetNode.weights.get(2).intValue();
+                Color newColor = new Color(red, green, blue);
+                int thing = newColor.getRGB();
+                bufferedImage.setRGB(i, j, -newColor.getRGB());
+            }
+        }
+        File output = new File("result.png");
+        try {
+            ImageIO.write(bufferedImage, "png", output);
+        } catch (Exception e) {}
     }
 
     private void printWeights() {

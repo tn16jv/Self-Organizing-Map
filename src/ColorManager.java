@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class ColorManager {
@@ -41,6 +42,17 @@ public class ColorManager {
 
     public Color generateColor(int r, int g, int b){
         return new Color(r, g, b);
+    }
+
+    public ArrayList<Color> imageRGB(BufferedImage image) {
+        ArrayList<ArrayList<Integer>> rgb = new ArrayList<ArrayList<Integer>>();
+        ArrayList<Color> colors = new ArrayList<Color>();
+        for (int i=0; i<image.getHeight(); i++) {
+            for (int j=0; j<image.getWidth(); j++) {
+                colors.add(new Color(image.getRGB(j, i)));
+            }
+        }
+        return colors;
     }
 
     public int[][] randomImage(int length, int width) {
