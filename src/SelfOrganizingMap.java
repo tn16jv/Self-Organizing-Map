@@ -110,7 +110,7 @@ public class SelfOrganizingMap {
                     (double)data[1][randIndex], (double)data[2][randIndex]);
             int closestIndex = bestMatchingUnit(currentCell, randIndex);
             for (int j=0; j<nodes.size(); j++) {
-                double cellDistance = toplogy.latticeDistance(closestIndex, j);
+                double cellDistance = toplogy.latticeDistance2D(closestIndex, j);
                 double hrs = Math.exp(- (cellDistance*cellDistance)/(2.0 * neighSize * neighSize));
                 nodes.get(j).adjustWeights(currentCell, hrs);
             }

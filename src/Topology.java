@@ -21,6 +21,18 @@ public class Topology {
         return (double)(Math.abs(row1 - row2) + Math.abs(col1 - col2) + Math.abs(thick1 - thick2));
     }
 
+    public double latticeDistance2D(int index1, int index2) {
+        int row1, col1, row2, col2;
+
+        row1 = index1 / latWidth;
+        col1 = index1 - (row1 * latWidth);
+
+        row2 = index2 / latWidth;
+        col2 = index2 - (row2 * latWidth);
+
+        return (double) (Math.abs(row1 - row2) + Math.abs(col1 - col2));
+    }
+
     public double cellCount() {
         return latHeight * latWidth * latThick;
     }
