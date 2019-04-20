@@ -6,7 +6,7 @@ Focus was on colour clustering and its uses in images.
 ## Execution Sample
 &nbsp;
 <p align = "center">
-    <img src="https://raw.githubusercontent.com/tn16jv/Self-Organizing-Map/master/Images/initial.png alt="Pre-Train">
+    <img src="https://raw.githubusercontent.com/tn16jv/Self-Organizing-Map/master/Images/initial.png" alt="Pre-Train">
      Randomized Initial Weights of the SOM
 </p>
 
@@ -25,6 +25,6 @@ Focus was on colour clustering and its uses in images.
 
 &nbsp;
 <p align = "center">
-    <img src="https://raw.githubusercontent.com/tn16jv/Self-Organizing-Map/master/Images/compressed.PNG" alt="Post-Compress">
+    <img src="https://raw.githubusercontent.com/tn16jv/Self-Organizing-Map/master/Images/compressed.png" alt="Post-Compress">
      Example Image After Compression
 </p>
