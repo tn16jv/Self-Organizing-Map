@@ -7,24 +7,24 @@ Focus was on colour clustering and its uses in images.
 &nbsp;
 <p align = "center">
     <img src="https://raw.githubusercontent.com/tn16jv/Self-Organizing-Map/master/Images/initial.png" alt="Pre-Train">
-     Randomized Initial Weights of the SOM
+     <p>Randomized Initial Weights of the SOM</p>
 </p>
 
 &nbsp;
 <p align = "center">
     <img src="https://raw.githubusercontent.com/tn16jv/Self-Organizing-Map/master/Images/trained.png" alt="Post-Train">
-     After Training and CLustering
+     <p>After Training and Clustering</p>
 </p>
 
 ## Image Compression
 &nbsp;
 <p align = "center">
     <img src="https://raw.githubusercontent.com/tn16jv/Self-Organizing-Map/master/Images/example.PNG" alt="Pre-Compress">
-     Example Image Before Compression
+     <p>Example Image Before Compression</p>
 </p>
 
 &nbsp;
 <p align = "center">
     <img src="https://raw.githubusercontent.com/tn16jv/Self-Organizing-Map/master/Images/compressed.png" alt="Post-Compress">
-     Example Image After Compression
+     <p>Example Image After Compression</p>
 </p>
