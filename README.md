@@ -28,3 +28,5 @@ Focus was on colour clustering and its uses in images.
     <img src="https://raw.githubusercontent.com/tn16jv/Self-Organizing-Map/master/Images/compressed.png" alt="Post-Compress">
 </p>
 <p align="center">Example Image After Compression</p>
+
+the shadow in the background of the morgue
